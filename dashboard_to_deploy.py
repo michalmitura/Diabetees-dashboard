@@ -6,7 +6,7 @@ import pickle
 import matplotlib.pyplot as plt
 import joblib
 import numpy as np
-import sklearn
+import scikit-learn
 
 st.set_page_config(layout='wide')
 
