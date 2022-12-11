@@ -1,0 +1,8 @@
+,Model,Accuracy,AUC,Recall,Precision,F1 Score
+0,Logistic Regression,0.753,0.754,0.736,0.796,0.765
+1,Decision Tree,0.825,0.82,0.868,0.821,0.844
+2,Random Forest,0.851,0.847,0.887,0.847,0.866
+3,Gradient Boosting Classifier,0.794,0.789,0.84,0.795,0.817
+4,SVC,0.722,0.729,0.651,0.802,0.719
+5,k-NN Classifier,0.722,0.715,0.783,0.728,0.755
+6,NN Classifier,0.784,0.784,0.783,0.814,0.798
