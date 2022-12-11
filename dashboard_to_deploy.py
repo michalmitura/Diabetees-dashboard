@@ -62,7 +62,7 @@ def generate_first_plot(feature):
 
 def generate_second_plot(feature):
     plot = px.histogram(data_frame = data, x=feature, color='Outcome', marginal='box', 
-    title=f'Distribution of {selected_feature} for healthy patients (0) vs. diabetees (1)',
+    title=f'Distribution of {selected_feature} in a sample for healthy patients (0) vs. diabetees (1)',
     histnorm='percent', color_discrete_sequence=['red', 'green'])
     plot.update_layout({'plot_bgcolor': 'rgba(0, 0, 0, 0)', 'paper_bgcolor': 'rgba(0, 0, 0, 0)'},
             xaxis=dict(showgrid=False), yaxis=dict(showgrid=False),
@@ -121,11 +121,8 @@ data = load_data()
 
 with introduction:
     st.header('Introduction')
-    st.write('Below dashboard presents data from National Institute of Diabetes and Digestive and Kidney Diseases. In the first part I included'
-    'the analysis of distribution of features in sample and comparison of feature distribution between'
-    'healthy patients and patients with diabetees. In second part the feature importances for all models used in the task can be found. '
-    'In next part of dashboard, performance of all models was shown along with confusion matrices. In last part of the dashboard,'
-    ' I implemented several ML models which predict whether patient has diabetees or not based on given parameters.')
+    st.write('The dashboard below presents data from the National Institute of Diabetes and Digestive and Kidney Diseases. In the first part, I included an analysis of the distribution of features in the sample and a comparison of the feature distribution between healthy patients and patients with diabetes. In the second part, the feature importances for all models used in the task can be found.'
+    ' In the next part of the dashboard, the performance of all models is shown along with confusion matrices. In the last part of the dashboard, I implemented several ML models that predict whether a patient has diabetes based on given parameters.')
 
 with overview:
     st.header('Dataset overview')
@@ -143,14 +140,12 @@ with overview:
         st.write(plot2)
     
     st.write(
-        'In terms of pregnancies, the positive correlation between percentage of women diagnosed with diabetees and number of pregnancies can be seen.'
-        '\n High glucose concentration also was a conducive factor for diabetees, regarding blood pressure the difference between distributions in healthy patients and diabetees '
-        "groups wasn't as significant."
-        "\n Among patients with higher skin thickness, higher percent of diabetees can be seen, but it doesn't seem to be a decisive factor."
-        "\n\n Analyzing distribution of insulin concentration, higher levels was usually associated with presence of disease. Starting at 120, percentage of diabetees tend to be two times higher than healthy people at given insulin level"
-        "\n\n In terms of BMI, strong presence of diabetees was seen at the higher values of BMI. The distribution of BMI was moved to the right by 5 on average"
-        "\n\n Diabetees Pedigree Function tends to be higher for the womens with diagnosed diabetees. It indicates high importance of this feature for diabetees diagnosis."
-        " Analyzing distribution of age, older age groups tend to be more affected with the disease, starting around age of 30."
+    "In terms of pregnancies, a positive correlation between the percentage of women diagnosed with diabetes and the number of pregnancies can be seen."
+    "\n High glucose concentration was also a conducive factor for diabetes, but regarding blood pressure, the difference between the distributions in healthy patients and diabetes groups was not as significant."
+    "\n Among patients with higher skin thickness, a higher percentage of diabetes can be seen, but it doesn't seem to be a decisive factor."
+    "\n\n Analyzing the distribution of insulin concentration, higher levels were usually associated with the presence of the disease. Starting at 120, the percentage of diabetes tends to be two times higher than healthy people at a given insulin level."
+    "\n\n In terms of BMI, a strong presence of diabetes was seen at higher values of BMI. The distribution of BMI was moved to the right by an average of 5."
+    "The diabetes Pedigree Function tends to be higher for women with diagnosed diabetes. It indicates the high importance of this feature for diabetes diagnosis. Analyzing the distribution of age, older age groups tend to be more affected by the disease, starting around the age of 30."
     )
     
 with feature_importances:
@@ -167,8 +162,8 @@ with feature_importances:
         feature_importances_plot = generate_feature_importances_chart(feature_importance_data=feature_importances)
         st.write(feature_importances_plot)
     st.write(
-        'Above table and chart shows feature weights for models from which these could be obtained. In all models except Logistic Regression'
-        ' glucose level was the most important factor for predicting diabetees.'
+        "The table and chart above show feature weights for models from which these were obtained. "
+        "In all models except the Logistic Regression model, the glucose level was the most important factor for predicting diabetes."
     )
 
 
@@ -202,14 +197,14 @@ with predictions:
         
 
         selected_pregnancies = st.number_input('Choose number of pregnancies', min_value=0, step=1)
-        selected_glucose = st.number_input('Choose glucose concentration', min_value=0, max_value=200, step=1)
+        selected_glucose = st.number_input('Choose glucose concentration', min_value=0, max_value=200, step=1, value=120)
     with col8:
-        selected_blood_pressure = st.number_input('Choose blood pressure', min_value=0, max_value=200, step=1)
-        selected_skin_thickness = st.number_input('Choose skin thickness', min_value=0, max_value=100, step=1)
+        selected_blood_pressure = st.number_input('Choose blood pressure', min_value=0, max_value=200, step=1, value=75)
+        selected_skin_thickness = st.number_input('Choose skin thickness', min_value=0, max_value=100, step=1, value=25)
         selected_insulin = st.number_input('Choose insulin concentration', min_value=0, max_value=1000, step=1)
     with col9:
-        selected_bmi = st.number_input('Choose BMI', min_value=0.00, max_value=100.00, step=0.1)
-        selected_pedrigree = st.number_input('Choose Diabetes Pedigree Function value', min_value=0.00)
+        selected_bmi = st.number_input('Choose BMI', min_value=0.00, max_value=100.00, step=0.1, value=30)
+        selected_pedrigree = st.number_input('Choose Diabetes Pedigree Function value', min_value=0.00, value=0.25)
         selected_age = st.number_input('Choose age', min_value=0, max_value=100, step=1)
 
     input_data = pd.DataFrame(data=[selected_pregnancies, selected_glucose, selected_blood_pressure,
