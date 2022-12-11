@@ -33,9 +33,9 @@ def load_model(selected_model):
     'Support Vectors Classifier': 'SVC()', 
     'k-Neighbors Classifier': 'KNeighborsClassifier()'}
     model_name = models_dict[selected_model]
-    file = open(f'models/{model_name}.pickle', mode='rb')
-    model = pickle.load(file=file)
-    file.close()
+    model_file = open(f'models/{model_name}.pickle', mode='rb')
+    model = pickle.load(file=model_file)
+    model_file.close()
     return model
 
 def load_scaler():
