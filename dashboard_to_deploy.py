@@ -203,7 +203,7 @@ with predictions:
         selected_skin_thickness = st.number_input('Choose skin thickness', min_value=0, max_value=100, step=1, value=25)
         selected_insulin = st.number_input('Choose insulin concentration', min_value=0, max_value=1000, step=1)
     with col9:
-        selected_bmi = st.number_input('Choose BMI', min_value=0.00, max_value=100.00, step=0.1, value=30)
+        selected_bmi = st.number_input('Choose BMI', min_value=0.00, max_value=100.00, step=0.1, value=30.0)
         selected_pedrigree = st.number_input('Choose Diabetes Pedigree Function value', min_value=0.00, value=0.25)
         selected_age = st.number_input('Choose age', min_value=0, max_value=100, step=1)
 
